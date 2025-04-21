@@ -11,54 +11,43 @@ PhoneBook::~PhoneBook()
 
 void PhoneBook::addContact()
 {
-    int i = count % 8;
-    arr[i].setContact();
+    int index = count % 8;
+    contacts[index].setContact();
     count++;
 }
 
 void PhoneBook::displayContacts() const
 {
-    int i;
-
-    i = 0;
     std::cout << std::setw(10) << "Index" << "|"
-              <<std::setw(10) << "First Name" << "|"
-              <<std::setw(10) << "Last Name" << "|"
-              <<std::setw(10) << "Nickname" << "|" << std::endl;
-    while(i < 8)
+              << std::setw(10) << "First Name" << "|"
+              << std::setw(10) << "Last Name" << "|"
+              << std::setw(10) << "Nickname" << std::endl;
+
+    for (int i = 0; i < count && i < 8; i++)
     {
         std::cout << std::setw(10) << i << "|";
 
-        std::string firstName = arr[i].getFirstName();
-        std::string lastName = arr[i].getLastName();
-        std::string nickName = arr[i].getNickName();
+        std::string firstName = contacts[i].getFirstName();
+        std::string lastName = contacts[i].getLastName();
+        std::string nickname = contacts[i].getNickName();
 
-        if (firstName.length() > 10)
-            firstName = firstName.substr(0, 9) + ".";
-        if (lastName.length() > 10)
-            lastName = lastName.substr(0, 9) + ".";
-        if (nickName.length() > 10)
-            nickName = nickName.substr(0, 9) + ".";
-
-        std::cout << std::setw(10) << firstName << "|"
-                  << std::setw(10) << lastName << "|"
-                  << std::setw(10) << nickName << std::endl;
-
-        i++;
-    } 
+        std::cout << std::setw(10) << cutField(firstName) << "|"
+                  << std::setw(10) << cutField(lastName) << "|"
+                  << std::setw(10) << cutField(nickname) << std::endl;
+    }
 }
 
 void PhoneBook::searchContact() const
 {
     displayContacts();
 
-    std::cout << "Enter index of the contact to display: ";
+    std::cout << "Enter the index of the contact to display: ";
     std::string input;
     std::getline(std::cin, input);
 
     if (input.length() != 1 || !isdigit(input[0]))
     {
-        std::cout << "Invalid index." << std::endl;
+        std::cout << "Invalid input. Please enter a valid index." << std::endl;
         return;
     }
 
@@ -70,6 +59,13 @@ void PhoneBook::searchContact() const
         return;
     }
 
-    arr[index].displayContact();
+    contacts[index].displayContact();
+}
+
+std::string PhoneBook::cutField(const std::string& field) const
+{
+    if (field.length() > 10)
+        return field.substr(0, 9) + ".";
+    return field;
 }
 

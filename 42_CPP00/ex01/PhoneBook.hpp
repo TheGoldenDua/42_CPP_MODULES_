@@ -5,11 +5,12 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <limits>
 
 class PhoneBook
 {
     private:
-        Contact arr[8];
+        Contact contacts[8];
         int count;
     public:
         PhoneBook();
@@ -18,6 +19,7 @@ class PhoneBook
         void addContact();
         void searchContact() const;
         void displayContacts() const;
+        std::string cutField(const std::string& field) const;
 };
 
 #endif
