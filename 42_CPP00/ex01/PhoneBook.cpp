@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/24 13:41:47 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/04/24 13:41:48 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "PhoneBook.hpp"
 
@@ -68,4 +80,3 @@ std::string PhoneBook::cutField(const std::string& field) const
         return field.substr(0, 9) + ".";
     return field;
 }
-

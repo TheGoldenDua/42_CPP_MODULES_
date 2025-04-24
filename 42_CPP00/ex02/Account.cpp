@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/24 13:44:53 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/04/24 13:44:54 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Account.hpp"
 #include <iostream>
 #include <ctime> 
@@ -8,35 +20,34 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-Account::Account(int initial_deposit)
+Account::Account(int start_deposit)
 {
     _accountIndex = _nbAccounts;
-	_amount = initial_deposit; //accoun't starting money
+	_amount = start_deposit; 
 	_nbDeposits = 0;
 	_nbWithdrawals = 0;
 
 	_nbAccounts++;
-	_totalAmount += initial_deposit;
+	_totalAmount += start_deposit;
 
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex
 			  << ";amount:" << _amount
-			  << ";created:" << std::endl;
+			  << ";created" << std::endl;
 }
 
 void Account::_displayTimestamp()
 {
-    std::time_t now = std::time(NULL);           // Get current time (seconds since 1970)
-    std::tm *t = std::localtime(&now);           // Convert to local time (year, month, etc.)
-
+    std::time_t now = std::time(NULL);          
+    std::tm *t = std::localtime(&now);        
     std::cout << "[" 
-              << std::setfill('0') << std::setw(4) << t->tm_year + 1900  // Year
-              << std::setw(2) << t->tm_mon + 1                            // Month (0-11) → (1-12)
-              << std::setw(2) << t->tm_mday                               // Day
+              << std::setfill('0') << std::setw(4) << t->tm_year + 1900  
+              << std::setw(2) << t->tm_mon + 1                            
+              << std::setw(2) << t->tm_mday                               
               << "_" 
-              << std::setw(2) << t->tm_hour                               // Hour
-              << std::setw(2) << t->tm_min                                // Minute
-              << std::setw(2) << t->tm_sec                                // Second
+              << std::setw(2) << t->tm_hour                               
+              << std::setw(2) << t->tm_min                                
+              << std::setw(2) << t->tm_sec                               
               << "] ";
 }
 
@@ -84,7 +95,7 @@ bool Account::makeWithdrawal(int withdrawal)
 	return true;
 }
 
-void Account::displayStatus() const //doesn't modify the account data
+void Account::displayStatus() const 
 {
 	_displayTimestamp();
 
