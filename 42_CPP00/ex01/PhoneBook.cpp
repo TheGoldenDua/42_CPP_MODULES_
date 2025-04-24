@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dua <dua@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:41:47 by del-ganb          #+#    #+#             */
-/*   Updated: 2025/04/24 13:41:48 by del-ganb         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:55:37 by dua              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void PhoneBook::displayContacts() const
     std::cout << std::setw(10) << "Index" << "|"
               << std::setw(10) << "First Name" << "|"
               << std::setw(10) << "Last Name" << "|"
-              << std::setw(10) << "Nickname" << std::endl;
+              << std::setw(10) << "Nickname" << "|"
+              << std::setw(10) << "Phone number" << std::endl;
 
     for (int i = 0; i < count && i < 8; i++)
     {
@@ -42,10 +43,12 @@ void PhoneBook::displayContacts() const
         std::string firstName = contacts[i].getFirstName();
         std::string lastName = contacts[i].getLastName();
         std::string nickname = contacts[i].getNickName();
+        std::string phonenumber = contacts[i].getPhoneNumber();
 
         std::cout << std::setw(10) << cutField(firstName) << "|"
                   << std::setw(10) << cutField(lastName) << "|"
-                  << std::setw(10) << cutField(nickname) << std::endl;
+                  << std::setw(10) << cutField(nickname) << "|"
+                  << std::setw(10) << cutField(phonenumber) << std::endl;
     }
 }
 

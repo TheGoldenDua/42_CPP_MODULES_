@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dua <dua@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:41:38 by del-ganb          #+#    #+#             */
-/*   Updated: 2025/04/24 13:41:39 by del-ganb         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:59:48 by dua              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int main(void)
 
         if (!std::getline(std::cin, input))
             return (1); 
-
         if (input == "ADD")
             phoneBook.addContact();
         else if (input == "SEARCH")

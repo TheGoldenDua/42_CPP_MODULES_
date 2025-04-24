@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dua <dua@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:41:27 by del-ganb          #+#    #+#             */
-/*   Updated: 2025/04/24 13:41:30 by del-ganb         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:57:33 by dua              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,82 @@ Contact::~Contact()
 {
 }
 
+bool Contact::check_input(std::string str)
+{
+    int i = 0;
+    if(str.empty())
+    {
+        std::cout << "Empty input!" << std::endl;
+        return (false);
+    }
+    for (size_t i = 0; i < str.length(); i++)
+    {
+        if(isprint(str[i]) == 0 || str[i] == 32)
+        {
+            std::cout << "Non printable charachters!" << std::endl;
+            return (false);
+        }
+    }
+    return (true);
+}
+
 void Contact::setContact()
 {
-    std::cout << "Enter first name: ";
-    std::getline(std::cin, FirstName);
+    std::string tmp;
+    while(true && !std::cin.eof())
+    {
+        std::cout << "Enter first name: ";
+        std::getline(std::cin, tmp);
+        if(check_input(tmp))
+        {
+            this->FirstName = tmp;
+            break;
+        }
+    }
 
-    std::cout << "Enter last name: ";
-    std::getline(std::cin, LastName);
+    while(true && !std::cin.eof())
+    {
+        std::cout << "Enter last name: ";
+        std::getline(std::cin, tmp);
+        if(check_input(tmp))
+        {
+            this->LastName = tmp;
+            break;
+        }
+    }
+    
+    while(true && !std::cin.eof())
+    {
+        std::cout << "Enter nickname: ";
+        std::getline(std::cin, tmp);
+        if(check_input(tmp))
+        {
+            this->NickName = tmp;
+            break;
+        }
+    }
+    
+    while(true && !std::cin.eof())
+    {
+        std::cout << "Enter phone number: ";
+        std::getline(std::cin, tmp);
+        if(check_input(tmp))
+        {
+            this->PhoneNumber = tmp;
+            break;
+        }
+    }
 
-    std::cout << "Enter nickname: ";
-    std::getline(std::cin, NickName);
-
-    std::cout << "Enter darkest secret: ";
-    std::getline(std::cin, DarkestSecret);
+    while(true && !std::cin.eof())
+    {
+        std::cout << "Enter darkest secret: ";
+        std::getline(std::cin, tmp);
+        if(check_input(tmp))
+        {
+            this->DarkestSecret = tmp;
+            break;
+        }
+    }
 }
 
 void Contact::displayContact() const
@@ -57,4 +120,9 @@ std::string Contact::getLastName() const
 std::string Contact::getNickName() const
 {
     return NickName;
+}
+
+std::string Contact::getPhoneNumber() const
+{
+    return PhoneNumber;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dua <dua@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:41:34 by del-ganb          #+#    #+#             */
-/*   Updated: 2025/04/24 13:41:35 by del-ganb         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:52:58 by dua              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ class Contact
         Contact();
         ~Contact();
 
+        bool check_input(std::string str);
         void setContact();
         void displayContact() const;
         std::string getFirstName() const;
         std::string getLastName() const;
         std::string getNickName() const;
+        std::string getPhoneNumber() const;
 };
 
 #endif
