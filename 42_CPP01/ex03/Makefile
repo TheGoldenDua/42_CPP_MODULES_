@@ -1,12 +1,10 @@
-NAME = zombie
+NAME = Unnecessary_violence
 
-SRC = newZombie.cpp main.cpp Zombie.cpp randomChump.cpp
+SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
 OBJ = ${SRC:.cpp=.o}
 
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
-
-RM = rm -rf
 
 all : ${NAME}
 
@@ -14,11 +12,9 @@ ${NAME} : ${OBJ}
 	c++ ${CPPFLAGS} ${SRC} -o ${NAME}
 
 clean :
-	$(RM) ${OBJ}
+	rm -f ${OBJ}
 
 fclean : clean
-	$(RM) ${NAME}
+	rm -f ${NAME}
 
 re : fclean all
-
-PHONY : all clean fclean re

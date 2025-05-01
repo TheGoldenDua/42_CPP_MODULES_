@@ -1,21 +1,25 @@
+
 NAME = horde
-CC = c++
-FLAGS =  -Wall -Wextra -Werror -std=c++98
-RM = rm -rf
+
 SRC = Zombie.cpp main.cpp zombieHorde.cpp
-OBJ = $(SRC:.cpp=.o)
 
-all: $(NAME)
+OBJ = ${SRC:.cpp=.o}
 
-$(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-clean:
-	$(RM) $(OBJ)
+RM = rm -rf
 
-fclean: clean
-	$(RM) $(NAME)
+all : ${NAME}
 
-re: fclean all
+${NAME} : ${OBJ}
+	c++ ${CPPFLAGS} ${SRC} -o ${NAME}
+
+clean :
+	$(RM) ${OBJ}
+
+fclean : clean
+	$(RM) ${NAME}
+
+re : fclean all
 
 PHONY : all clean fclean re
