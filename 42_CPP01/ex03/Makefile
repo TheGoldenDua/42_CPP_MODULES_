@@ -4,7 +4,7 @@ SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
 OBJ = ${SRC:.cpp=.o}
 
-CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g
 
 all : ${NAME}
 

@@ -1,12 +1,10 @@
-NAME = exec
+NAME = Harl_2.0
 
-SRC = main.cpp
+SRC = main.cpp Harl.cpp
 
 OBJ = ${SRC:.cpp=.o}
 
-CPPFLAGS = -std=c++98 -Wall -Wextra -Werror  
-
-RM = rm -rf
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror 
 
 all : ${NAME}
 
@@ -14,9 +12,9 @@ ${NAME} : ${OBJ}
 	c++ ${CPPFLAGS} ${SRC} -o ${NAME}
 
 clean :
-	$(RM) ${OBJ}
+	rm -f ${OBJ}
 
 fclean : clean
-	$(RM) ${NAME}
+	rm -f ${NAME}
 
 re : fclean all

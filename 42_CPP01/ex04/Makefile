@@ -1,4 +1,4 @@
-NAME = exec
+NAME = replace
 
 SRC = main.cpp
 
