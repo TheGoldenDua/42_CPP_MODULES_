@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/03 00:51:38 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/05/03 00:51:50 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -16,7 +28,6 @@ std::string replaceAll(const std::string& line, const std::string& s1, const std
     result += line.substr(pos);
     return result;
 }
-
 
 int main(int ac, char **av)
 {
@@ -59,7 +70,6 @@ int main(int ac, char **av)
         std::string replacedLine = replaceAll(line, s1, s2);
         outfile << replacedLine << std::endl;
     }
-
 
     infile.close();
     outfile.close();

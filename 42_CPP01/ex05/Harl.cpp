@@ -1,13 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/03 00:51:23 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/05/03 01:02:54 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Harl.hpp"
 
 Harl::Harl()
 {
-
 }
 
 Harl::~Harl()
 {
-
 }
 
 void Harl::debug(void)
@@ -30,7 +40,8 @@ void Harl::error(void)
     std::cout << "[ERROR] This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void Harl::complain(std::string level) {
+void Harl::complain(std::string level)
+{
     std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     void (Harl::*pfunc[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
@@ -44,7 +55,7 @@ void Harl::complain(std::string level) {
         }
         i++;
     }
-
+    
     switch (index) {
         case 0:
             (this->*pfunc[0])();
@@ -64,4 +75,3 @@ void Harl::complain(std::string level) {
                       << std::endl;
     }
 }
-
