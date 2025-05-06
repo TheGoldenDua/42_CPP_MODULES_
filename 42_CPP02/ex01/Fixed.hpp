@@ -8,7 +8,7 @@
 class Fixed
 {
     private:
-        int fPointval;
+        int value;
         static const int fractbit = 8;
     public:
         Fixed();
