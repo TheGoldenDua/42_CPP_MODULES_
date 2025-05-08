@@ -61,7 +61,7 @@ void ClapTrap::takeDamage(unsigned int amount)
                   << " can't take more damage." << std::endl;
     }
 
-    if(this->_hitPoints >= (int)amount)
+    if(this->_hitPoints >= static_cast <int> (amount))
         this->_hitPoints -= amount;
     else
         this->_hitPoints = 0;
