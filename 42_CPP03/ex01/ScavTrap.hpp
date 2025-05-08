@@ -2,6 +2,7 @@
 #define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
+#include <iostream>
 
 class ScavTrap : public ClapTrap
 {
@@ -12,7 +13,7 @@ class ScavTrap : public ClapTrap
         ScavTrap& operator=(const ScavTrap& other);
         ~ScavTrap();
 
-        void guardGate();
+        void guardGate() const;
 };
 
 #endif
