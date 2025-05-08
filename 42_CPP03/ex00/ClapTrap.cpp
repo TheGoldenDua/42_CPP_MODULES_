@@ -7,7 +7,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(const std::string& name)
 {
-    std::cout << "Constructor that takes the name called." << std::endl;
+    std::cout << "Parameterized constructor called." << std::endl;
     this->_name = name;
     this->_hitPoints = 10;
     this->_energyPoints = 10;
@@ -61,7 +61,7 @@ void ClapTrap::takeDamage(unsigned int amount)
                   << " can't take more damage." << std::endl;
     }
 
-    if(this->_hitPoints >= static_cast<int>(amount))
+    if(this->_hitPoints >= (int)amount)
         this->_hitPoints -= amount;
     else
         this->_hitPoints = 0;
