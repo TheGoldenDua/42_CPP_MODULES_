@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap():_name("default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
     std::cout << "Default constructor called." << std::endl;
 }
@@ -59,6 +59,7 @@ void ClapTrap::takeDamage(unsigned int amount)
     {
         std::cout << "ClapTrap " << this->_name << " is already destroyed!"
                   << " can't take more damage." << std::endl;
+        return ;
     }
 
     if(this->_hitPoints >= static_cast <int> (amount))
