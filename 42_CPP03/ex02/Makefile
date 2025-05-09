@@ -5,17 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: del-ganb <del-ganb@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/09 16:38:19 by del-ganb          #+#    #+#              #
-#    Updated: 2025/05/09 16:38:20 by del-ganb         ###   ########.fr        #
+#    Created: 2025/05/09 16:39:06 by del-ganb          #+#    #+#              #
+#    Updated: 2025/05/09 16:39:21 by del-ganb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = FragTrap
 
-
-
-NAME = ClapTrap
-
-SRC = main.cpp ClapTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/09 16:38:01 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/05/09 16:38:05 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap():_name("default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
@@ -22,7 +34,6 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
-    std::cout << "Copy assignement operator called." << std::endl;
     if(this != &other)
     {
         this->_name = other._name;
@@ -30,6 +41,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
         this->_energyPoints = other._energyPoints;
         this->_attackDamage = other._attackDamage;
     }
+    std::cout << "Copy assignement operator called." << std::endl;
     return *this;
 }
 
@@ -55,19 +67,26 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if ( this->_hitPoints == 0)
+    if (this->_hitPoints == 0)
     {
         std::cout << "ClapTrap " << this->_name << " is already destroyed!"
                   << " can't take more damage." << std::endl;
-        return;
+        
+    }
+    if (amount >= this->_hitPoints)
+    {
+        this->_hitPoints = 0;
+        std::cout << "ClapTrap " << this->_name << " took " << amount << " damage, and now has "
+               << this->_hitPoints << " hit points, and is now down!" << std::endl;
     }
 
-    if(this->_hitPoints >= static_cast <int> (amount))
+    if(amount < this->_hitPoints)
+    {
         this->_hitPoints -= amount;
-    else
-        this->_hitPoints = 0;
-    std::cout << "ClapTrap " << this->_name << " took " << amount << " damage, and now has "
-              << this->_hitPoints << " hit points." << std::endl;
+        std::cout << "ClapTrap " << this->_name << " took " << amount << " damage, and now has "
+               << this->_hitPoints << " hit points." << std::endl;
+    }
+    return ;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)

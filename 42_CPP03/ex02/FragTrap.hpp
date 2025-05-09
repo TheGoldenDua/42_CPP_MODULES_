@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: del-ganb <del-ganb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 16:38:32 by del-ganb          #+#    #+#             */
-/*   Updated: 2025/05/09 16:39:40 by del-ganb         ###   ########.fr       */
+/*   Created: 2025/05/09 16:38:59 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/05/09 16:39:00 by del-ganb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
+
+#include <iostream>
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-int main() {
-   
-    ScavTrap scav("scav");
+class FragTrap : public ClapTrap
+{
+    public:
+        FragTrap();
+        FragTrap(std::string name);
+        FragTrap(const FragTrap& other);
+        FragTrap& operator=(const FragTrap& other);
+        ~FragTrap();
 
-    
-    scav.attack("Target");
-    scav.takeDamage(30);
-    scav.beRepaired(10);
-    scav.guardGate(); 
+        void highFivesGuys(void);
+};
 
-   
-    scav.attack("Target");
-    scav.takeDamage(100); 
-    scav.beRepaired(20); 
-
-    return 0;
-}
+#endif
