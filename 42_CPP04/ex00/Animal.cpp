@@ -17,7 +17,7 @@ Animal& Animal::operator=(const Animal& other)
 {
     std::cout << "Animal copy assignement operator called." << std::endl;
     if(this != &other)
-        this->type = other.get_type();
+        this->type = other.getType();
     return *this;
 }
 
@@ -26,12 +26,12 @@ Animal::~Animal()
     std::cout << "Animal destructor called." << std::endl;
 }
 
-std::string Animal::get_type(void) const
+std::string Animal::getType(void) const
 {
     return this->type;
 }
 
-void Animal::sound()
+void Animal::makeSound() const
 {
     std::cout << "Animal makes a sound" << std::endl;
 }

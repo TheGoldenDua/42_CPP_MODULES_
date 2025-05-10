@@ -1,5 +1,4 @@
 #include "Cat.hpp"
-#include "Cat.hpp"
 
 Cat::Cat() : Animal()
 {
@@ -25,7 +24,7 @@ Cat::~Cat()
     std::cout << "Cat destructor called." << std::endl;
 }
 
-void Cat::sound()
+void Cat::makeSound() const
 {
     std::cout << "Cat meows" << std::endl;
 }
