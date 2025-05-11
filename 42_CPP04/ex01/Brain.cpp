@@ -15,7 +15,7 @@ Brain& Brain::operator=(const Brain& other)
 {
     int i = 0;
 
-    std::cout << "Brain assignement operator called." << std::endl;
+    std::cout << "Brain assignment operator called." << std::endl;
     if(this != &other)
     {
         while(i < 100)
