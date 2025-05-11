@@ -1,6 +1,6 @@
 NAME = Override
 
-SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp
+SRC = main.cpp srcs/Animal.cpp srcs/Dog.cpp srcs/Cat.cpp srcs/WrongCat.cpp srcs/WrongAnimal.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
