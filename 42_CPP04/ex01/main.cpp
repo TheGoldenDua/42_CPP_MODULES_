@@ -1,12 +1,11 @@
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "Brain.hpp"
+#include "includes/Animal.hpp"
+#include "includes/Dog.hpp"
+#include "includes/Cat.hpp"
+#include "includes/Brain.hpp"
 #include <iostream>
 
 int main()
 {
-    // Create one Dog and one Cat
     const Animal* dog = new Dog();
     const Animal* cat = new Cat();
 
@@ -14,7 +13,6 @@ int main()
     dog->makeSound();
     cat->makeSound();
 
-    // Clean up
     delete dog;
     delete cat;
 
@@ -23,7 +21,7 @@ int main()
     Dog original;
     original.setIdea(0, "I want a bone");
 
-    Dog copy = original; // This should call the copy constructor
+    Dog copy = original; // call the copy constructor
 
     std::cout << "Original idea: " << original.getIdea(0) << std::endl;
     std::cout << "Copied idea:   " << copy.getIdea(0) << std::endl;
