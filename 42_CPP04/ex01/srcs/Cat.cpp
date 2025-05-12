@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/12 16:08:44 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/05/12 16:36:48 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Cat.hpp"
 
 Cat::Cat() : Animal()
 {
     std::cout << "Cat default constructor called." << std::endl;
     this->type = "Cat";
-    this->_brain = new Brain;
+    this->_brain = new Brain();
 }
 
 Cat::Cat(const Cat& other) : Animal(other)
 {
     std::cout << "Cat copy constructor called." << std::endl;
-    _brain = new Brain(*other._brain);
+    _brain = new Brain(*other._brain); 
 }
 
 Cat& Cat::operator=(const Cat& other) 

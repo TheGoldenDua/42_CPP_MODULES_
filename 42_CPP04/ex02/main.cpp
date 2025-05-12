@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/12 16:06:57 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/05/12 16:52:18 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/AAnimal.hpp"
 #include "includes/Dog.hpp"
 #include "includes/Cat.hpp"
@@ -15,13 +27,13 @@ int main() {
         else
             animals[i] = new Cat();
     }
-
-    animals[1]->makeSound();
-    animals[2]->makeSound();
-
+    std::cout << std::endl;
+    for (int i = 0; i < size; ++i) {
+        animals[i]->makeSound();
+    }
+    std::cout << std::endl;
     for (int i = 0; i < size; ++i)
         delete animals[i]; 
 
     return 0;
 }
-

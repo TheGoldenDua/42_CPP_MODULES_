@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/12 16:07:23 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/05/12 16:57:20 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Brain.hpp"
 
 Brain::Brain()
@@ -8,9 +20,12 @@ Brain::Brain()
 Brain::Brain(const Brain& other)
 {
     std::cout << "Brain copy constructor called." << std::endl;
-    *this = other;
+    for (size_t i = 0; i < 100; i++)
+    {
+        this->ideas[i] = other.ideas[i];
+    }
+    
 }
-
 Brain& Brain::operator=(const Brain& other)
 {
     int i = 0;
