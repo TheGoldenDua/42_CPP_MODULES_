@@ -1,5 +1,53 @@
 
 #include <iostream>
+
+// class MyClass
+// {
+//     private:
+//         int *n;
+//     public:
+//         MyClass()
+//         {
+//             n = new int(0);
+//         }
+//         MyClass(int j)
+//         {
+//             n = new int(j);
+//             *n = j;
+//         }
+//         MyClass(const MyClass& copy)
+//         {
+//             n = new int(*(copy.n));
+//         }
+//         ~MyClass()
+//         {
+//             delete n;
+//         };
+
+//         void set_number(int set)
+//         {
+//             *n = set;
+//         }
+
+//         int get_number(void)
+//         {
+//             return (*n);
+//         }
+// };
+
+// int main()
+// {
+//     MyClass nb(5);
+//     std::cout << "my number is:" << nb.get_number();
+
+//     std::cout << std::endl;
+//     MyClass nb2 = nb;
+//     std::cout << "my nb2 is:" << nb2.get_number() << std::endl;
+
+// }
+
+
+#include <iostream>
 using namespace std;
 
 class box
