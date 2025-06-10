@@ -1,4 +1,3 @@
-
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
@@ -38,7 +37,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     std::ofstream outfile(((this->target) + "_shrubbery").c_str());
     if(!outfile)
     {
-        std::cout << "-----------Error------------\n"
+        std::cerr << "-----------Error------------\n"
                   << "Could not create the output file." << std::endl;
         return ;
     }
