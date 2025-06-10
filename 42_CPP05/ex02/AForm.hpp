@@ -33,12 +33,18 @@ class AForm
             public: 
                 const char *what() const throw();
         };
-
          class GradeTooLowException : public std::exception
         {
             public: 
                 const char *what() const throw();
         };
+        class FormNotSignedException : public std::exception
+        {
+            public:
+                const char *what() const throw();
+        };
+
+        void checkExecution(Bureaucrat const & executor) const;
         virtual void execute(Bureaucrat const & executor) const = 0;
 };
 
