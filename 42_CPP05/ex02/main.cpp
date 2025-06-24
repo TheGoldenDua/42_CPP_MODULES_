@@ -1,9 +1,9 @@
 
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "includes/RobotomyRequestForm.hpp"
+#include "includes/PresidentialPardonForm.hpp"
+#include "includes/ShrubberyCreationForm.hpp"
+#include "includes/Bureaucrat.hpp"
+#include "includes/AForm.hpp"
 
 int main()
 {
@@ -23,11 +23,11 @@ int main()
         high.signForm(shrub);
         high.executeForm(shrub);
 
-        std::cout << "---------------------------------" << std::endl;
+        std::cout << "\n----------------Robot test-----------------\n" << std::endl;
         high.signForm(robot);
         high.executeForm(robot);
 
-        std::cout << "---------------------------------" << std::endl;
+        std::cout << "\n----------------Presidential test-----------------\n" << std::endl;
         high.signForm(pardon);
         high.executeForm(pardon);
         
@@ -37,5 +37,4 @@ int main()
 	}
 
 }
-
 

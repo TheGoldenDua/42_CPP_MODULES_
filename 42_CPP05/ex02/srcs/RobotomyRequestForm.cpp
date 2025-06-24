@@ -1,4 +1,4 @@
-#include "RobotomyRequestForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm()
     : AForm("RobotomyRequestForm", 72, 45), target("default")
@@ -39,7 +39,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
     if(rand() % 2 == 0)
         std::cout << target << " has been robotomized successfully" << std::endl;
     else    
-        std::cout << "-----------ERROR----------\n"
+        std::cout << "ERROR\n"
                   << "robotomy failed!"
                   <<std::endl;
 }
