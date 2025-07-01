@@ -5,6 +5,7 @@
 #include <cmath>
 #include <cctype>
 #include <climits>
+#include <iomanip> 
 
 class  ScalarConverter
 {
@@ -16,6 +17,11 @@ class  ScalarConverter
 
         static std::string which_type(std::string const& m_type);
         static bool check_input(std::string const &str); 
+
+        static void printFloat(double value);
+        static void printDouble(double value);
+        static void printInt(double value);
+        static void printChar(double value);
 
     public:
         static void convert(std::string const& m_type);

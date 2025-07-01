@@ -52,7 +52,39 @@ std::string ScalarConverter::which_type(std::string const& input)
     if(*doublEnd == '\0')
         return "double";
 
-    return "unknown";
+    return "unknown!";
+}
+
+void ScalarConverter::printChar(double value)
+{
+    std::cout << "char: ";
+    if (std::isnan(value) || value < 0 || value > 127)
+        std::cout << "Impossible!" << std::endl;
+    else if (!std::isprint(static_cast<char>(value)))
+        std::cout << "Non printable!" << std::endl;
+    else
+        std::cout << "'" << static_cast<char>(value) << "'" << std::endl;
+}
+
+void ScalarConverter::printInt(double value)
+{
+    std::cout << "int: ";
+    if (std::isnan(value) || value < static_cast<double>(INT_MIN) || value > static_cast<double>(INT_MAX))
+        std::cout << "Impossible!" << std::endl;
+    else
+        std::cout << static_cast<int>(value) << std::endl;
+}
+
+void ScalarConverter::printFloat(double value)
+{
+    std::cout << "float: ";
+    std::cout << std::fixed << std::setprecision(1) << static_cast<float>(value) << "f" << std::endl;
+}
+
+void ScalarConverter::printDouble(double value)
+{
+    std::cout << "double: ";
+    std::cout << std::fixed << std::setprecision(1) << static_cast<double>(value) << std::endl;
 }
 
 void ScalarConverter::convert(std::string const& input)
@@ -61,8 +93,35 @@ void ScalarConverter::convert(std::string const& input)
         return;
 
     std::string type;
+    double val;
+
     type = which_type(input);
     std::cout << "Detected type: " << type << std::endl;
+    
+    if(type == "char")
+    {
+        char c = input[0];
+        val = static_cast<double>(c);
+    }
+    else if(type == "int")
+    {
+        val = std::atoi(input.c_str());
+    }
+    else if(type == "float")
+    {
+        val = static_cast<double> (std::strtof(input.c_str(), NULL));
+    }
+    else if(type == "double")
+    {
+        val = std::strtod(input.c_str(), NULL);
+    }
+    else
+    {
+        std::cout << "conversion impossible!" << std::endl;
+        return ;
+    }
+    printChar(val);
+    printInt(val);
+    printFloat(val);
+    printDouble(val);
 }
-
-
