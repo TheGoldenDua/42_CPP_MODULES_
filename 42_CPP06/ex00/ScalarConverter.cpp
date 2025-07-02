@@ -2,7 +2,6 @@
 
 bool ScalarConverter::check_input(std::string const& str)
 {
-    int i = 0;
     if(str.empty())
     {
         std::cout << "Empty input!" << std::endl;
@@ -36,7 +35,7 @@ std::string ScalarConverter::which_type(std::string const& input)
     if(*intEnd == '\0' && val >= INT_MIN && val <= INT_MAX)
         return "int";
 
-    if(input.back() == 'f')
+    if(!input.empty() && input[input.length() - 1] == 'f')
     {
         std::string fltPart;
         char *floatEnd;
@@ -55,18 +54,18 @@ std::string ScalarConverter::which_type(std::string const& input)
     return "unknown!";
 }
 
-void ScalarConverter::printChar(double value)
+void ScalarConverter::print_char(double value)
 {
     std::cout << "char: ";
     if (std::isnan(value) || value < 0 || value > 127)
         std::cout << "Impossible!" << std::endl;
     else if (!std::isprint(static_cast<char>(value)))
-        std::cout << "Non printable!" << std::endl;
+        std::cout << "Non displayable!" << std::endl;
     else
         std::cout << "'" << static_cast<char>(value) << "'" << std::endl;
 }
 
-void ScalarConverter::printInt(double value)
+void ScalarConverter::print_int(double value)
 {
     std::cout << "int: ";
     if (std::isnan(value) || value < static_cast<double>(INT_MIN) || value > static_cast<double>(INT_MAX))
@@ -75,13 +74,13 @@ void ScalarConverter::printInt(double value)
         std::cout << static_cast<int>(value) << std::endl;
 }
 
-void ScalarConverter::printFloat(double value)
+void ScalarConverter::print_float(double value)
 {
     std::cout << "float: ";
     std::cout << std::fixed << std::setprecision(1) << static_cast<float>(value) << "f" << std::endl;
 }
 
-void ScalarConverter::printDouble(double value)
+void ScalarConverter::print_double(double value)
 {
     std::cout << "double: ";
     std::cout << std::fixed << std::setprecision(1) << static_cast<double>(value) << std::endl;
@@ -120,8 +119,8 @@ void ScalarConverter::convert(std::string const& input)
         std::cout << "conversion impossible!" << std::endl;
         return ;
     }
-    printChar(val);
-    printInt(val);
-    printFloat(val);
-    printDouble(val);
+    print_char(val);
+    print_int(val);
+    print_float(val);
+    print_double(val);
 }

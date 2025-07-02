@@ -6,6 +6,7 @@
 #include <cctype>
 #include <climits>
 #include <iomanip> 
+#include <stdlib.h>
 
 class  ScalarConverter
 {
@@ -18,10 +19,10 @@ class  ScalarConverter
         static std::string which_type(std::string const& m_type);
         static bool check_input(std::string const &str); 
 
-        static void printFloat(double value);
-        static void printDouble(double value);
-        static void printInt(double value);
-        static void printChar(double value);
+        static void print_float(double value);
+        static void print_double(double value);
+        static void print_int(double value);
+        static void print_char(double value);
 
     public:
         static void convert(std::string const& m_type);
