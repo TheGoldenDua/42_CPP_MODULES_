@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/03 12:12:00 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/07/03 12:16:23 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Base.hpp"
 
 Base::~Base(){}
-
 A::~A(){}
 B::~B(){}
 C::~C(){}
@@ -60,7 +71,7 @@ void identify(Base& p)
         (void) derivedA;
         return ;
     }
-    catch (std::bad_cast&){}
+    catch (std::exception& e){}
 
     try
     {
@@ -69,7 +80,7 @@ void identify(Base& p)
         (void) derivedB;
         return ;
     }
-    catch (std::bad_cast&){}
+    catch (std::exception& e){}
     
     try
     {
@@ -78,7 +89,25 @@ void identify(Base& p)
         (void) derivedC;
         return ;
     }
-    catch (std::bad_cast&){}
+    catch (std::exception& e){}
 
     std::cout << "Unknown type!" << std::endl;
+}
+
+int main()
+{
+    srand(time(NULL));
+
+    Base *ptr = generate();
+
+    std::cout << "Using pointer: ";
+    identify(ptr);
+    
+    std::cout << "-------------------" << std::endl;
+
+    std::cout << "Using reference: ";
+    identify(*ptr);
+
+    delete ptr;
+    return 0;
 }

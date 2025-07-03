@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/03 12:11:57 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/07/03 12:15:47 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BASE_HPP
 #define BASE_HPP
 
 #include <iostream>
 #include <cstdlib>
-#include <typeinfo>
 
 class Base
 {
@@ -28,9 +39,5 @@ class C : public Base
     public:
         ~C();
 };
-
-Base *generate(void);
-void identify(Base* p);
-void identify(Base& p);
 
 #endif
