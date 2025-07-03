@@ -6,7 +6,7 @@
 /*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:12:21 by del-ganb          #+#    #+#             */
-/*   Updated: 2025/07/03 12:12:22 by del-ganb         ###   ########.fr       */
+/*   Updated: 2025/07/03 12:24:13 by del-ganb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 struct Data
 {
     int i;
-    char *str;
+    std::string str;
     char c;
 };
 
