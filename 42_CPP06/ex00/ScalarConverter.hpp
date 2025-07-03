@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/03 12:12:25 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/07/03 12:12:26 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCALARCONVERTER_HPP
 #define SCALARCONVERTER_HPP
 
@@ -10,7 +22,7 @@
 
 class  ScalarConverter
 {
-    private:
+    public:
         ScalarConverter();
         ScalarConverter(const ScalarConverter& other);
         ScalarConverter&  operator=(const ScalarConverter& other);
@@ -24,7 +36,6 @@ class  ScalarConverter
         static void print_int(double value);
         static void print_char(double value);
 
-    public:
         static void convert(std::string const& m_type);
 };
 

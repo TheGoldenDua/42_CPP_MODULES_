@@ -1,4 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/03 12:12:33 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/07/03 12:12:34 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScalarConverter.hpp"
+
+ScalarConverter::ScalarConverter(){}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& other)
+{
+    *this = other;
+}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
+{
+    (void)other;
+    return (*this);
+}
+
+ScalarConverter::~ScalarConverter(){}
 
 bool ScalarConverter::check_input(std::string const& str)
 {

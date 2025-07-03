@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/07/03 12:12:43 by del-ganb          #+#    #+#              #
+#    Updated: 2025/07/03 12:12:44 by del-ganb         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = Convert
 SRC = main.cpp ScalarConverter.cpp 
 OBJ = $(SRC:.cpp=.o)
@@ -20,3 +32,4 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re
+
