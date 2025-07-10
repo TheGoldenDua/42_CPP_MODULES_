@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/27 10:15:57 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/06/27 10:15:58 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 int main()
@@ -16,18 +28,18 @@ int main()
     std::cout << "\n--------------Invalid high grade---------------\n";
     try
     {
-        Bureaucrat Sou("Sou", 0);  // Throws exception
-        std::cout << Sou << std::endl;  // This won't be executed
+        Bureaucrat Sou("Sou", 0); 
+        std::cout << Sou << std::endl;
     }
     catch (const std::exception& e)
     {
-        std::cout << e.what() << std::endl;  // Handles the exception
+        std::cout << e.what() << std::endl;
     }
 
     std::cout << "\n--------------Invalid low grade---------------\n";
     try
     {
-        Bureaucrat Bob("Bob", 200);  // Throws exception
+        Bureaucrat Bob("Bob", 200);
         std::cout << Bob << std::endl;
     }
     catch (const std::exception& e)
@@ -63,7 +75,7 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << "\n--------------Testing increment at max grade (1) -------------\n";
+    std::cout << "\n--------------Testing increment at max grade-------------\n";
     try
     {
         Bureaucrat Max("Max", 1);

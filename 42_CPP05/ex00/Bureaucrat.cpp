@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/27 10:16:07 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/06/27 10:16:08 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("default") , grade(150)
@@ -40,14 +52,14 @@ int Bureaucrat::getGrade(void) const
 
 void Bureaucrat::incrementGrade()
 {
-    if(grade - 1 < 1)
+    if(grade <= 1)
         throw GradeTooHighException();
     --grade;
 }
 
 void Bureaucrat::decrementGrade()
 {
-    if(grade + 1 > 150)
+    if(grade >= 150)
         throw GradeTooLowException();
     ++grade;
 }

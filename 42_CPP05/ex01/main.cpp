@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/27 10:15:24 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/06/27 10:15:25 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/Bureaucrat.hpp"
 #include "includes/Form.hpp"
 
@@ -18,7 +30,7 @@ int main()
         std::cout << "Unexpected error: " << e.what() << std::endl;
     }
 
-    std::cout << "\n--------------Invalid signing ( too low)---------------\n";
+    std::cout << "\n--------------Invalid signing (too low)---------------\n";
     try 
     {
         Bureaucrat Sou("Sou", 120);  

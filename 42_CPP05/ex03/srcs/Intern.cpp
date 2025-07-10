@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/27 10:13:10 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/06/27 10:13:11 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Intern.hpp"
 
 static AForm* createShrubberyForm(const std::string& target);
@@ -70,4 +82,3 @@ AForm* Intern::makeForm(std::string name, std::string target)
     std::cout << "Intern couldn’t find the form " << name << std::endl;
     return NULL;
 }
-

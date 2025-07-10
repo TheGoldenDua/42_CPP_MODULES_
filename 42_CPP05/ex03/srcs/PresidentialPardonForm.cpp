@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/27 10:13:02 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/06/27 10:13:03 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm()
