@@ -6,7 +6,7 @@
 /*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:12:25 by del-ganb          #+#    #+#             */
-/*   Updated: 2025/07/03 12:12:26 by del-ganb         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:08:51 by del-ganb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
 
 class  ScalarConverter
 {
-    public:
+    private:
         ScalarConverter();
         ScalarConverter(const ScalarConverter& other);
         ScalarConverter&  operator=(const ScalarConverter& other);
         ~ScalarConverter();
+    
+    public:
 
         static std::string which_type(std::string const& m_type);
         static bool check_input(std::string const &str); 

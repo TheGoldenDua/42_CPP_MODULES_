@@ -6,7 +6,7 @@
 /*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:11:57 by del-ganb          #+#    #+#             */
-/*   Updated: 2025/07/03 12:15:47 by del-ganb         ###   ########.fr       */
+/*   Updated: 2025/07/03 12:44:36 by del-ganb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 
 class Base
 {
