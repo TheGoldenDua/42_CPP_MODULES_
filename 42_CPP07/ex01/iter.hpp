@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/17 23:07:35 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/07/17 23:09:31 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ITER_HPP
 #define ITER_HPP
 
 #include <iostream>
 
-template <typename T>
-void print(const T& add)
+template <typename T> void print(const T& add)
 {
     std::cout << add << std::endl;
 }

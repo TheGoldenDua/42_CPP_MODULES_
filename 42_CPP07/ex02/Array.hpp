@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/17 23:07:12 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/07/17 23:10:23 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
 #include <iostream>
 #include <exception>
 
-template <typename T>
-class Array
+template <typename T> class Array
 {
     private:
         T* _data;
