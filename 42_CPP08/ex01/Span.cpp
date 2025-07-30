@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/30 16:47:47 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/07/30 16:47:48 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
 
 Span::Span() : N(0)
@@ -6,6 +18,8 @@ Span::Span() : N(0)
 
 Span::Span(unsigned int N) : N(N)
 {
+    if(N == 0)
+        throw std::invalid_argument("Span size must be greater than 0");
 }
 
 Span::Span(const Span& other)
