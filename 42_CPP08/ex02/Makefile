@@ -1,4 +1,4 @@
-NAME = Span
+NAME = container_adapter
 SRC = main.cpp 
 OBJ = $(SRC:.cpp=.o)
 
