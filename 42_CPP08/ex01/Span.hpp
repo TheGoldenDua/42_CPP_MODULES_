@@ -6,7 +6,7 @@
 /*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:47:51 by del-ganb          #+#    #+#             */
-/*   Updated: 2025/07/30 16:47:52 by del-ganb         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:15:10 by del-ganb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@
 #include <vector>
 #include <exception>
 #include <limits>
+
+class EmptySpanException : public std::exception
+{
+    public:
+        const char* what() const throw()
+        {
+            return "Empty array!";
+        };
+};
 
 class TooManyElementsException : public std::exception
 {
