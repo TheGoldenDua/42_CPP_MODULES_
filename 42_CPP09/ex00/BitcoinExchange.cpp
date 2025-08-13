@@ -19,10 +19,69 @@ static std::string trim(const std::string &str)
     return str.substr(start, end - start);
 }
 
+static bool isValidInt(const std::string& nbr)
+{
+    if(nbr.empty())
+        return false;
+    
+    size_t i = 0;
+    if(nbr[i] == '+' || nbr[i] == '-')
+        i++;
+    
+    while (i < nbr.size())
+    {
+        if(!std::isdigit(static_cast<unsigned char>(nbr[i])))
+            return false;
+        i++;
+    }
+
+    long nb = std::atol(nbr.c_str());
+    if(nb < INT_MIN || nb > INT_MAX)
+        return false;
+    return true;
+}
+
+static bool isValidDouble(const std::string& nbr)
+{
+    if(nbr.empty())
+        return false;
+
+    size_t i = 0;
+    bool hasDec = false;
+    bool hasDigit = false;
+    if(nbr[i] == '+' || nbr[i] == '-')
+        i++;
+    
+    while(i < nbr.size())
+    {
+        if (nbr[i] == '.')
+        {
+            if (hasDec)
+                return false;
+            hasDec = true;
+        }
+        else if(std::isdigit(static_cast<unsigned char>(nbr[i])))
+            hasDigit = true;
+        else
+            return false;
+
+        i++;
+    }
+    if(!hasDigit)
+        return false;
+
+    char *endptr;
+    std::strtod(nbr.c_str(), &endptr);
+    if (*endptr != '\0')
+        return false;
+
+    return true;
+}
+
 BitcoinExchange::BitcoinExchange(const std::string &databaseFile)
 {
     std::string line;
-    std::ifstream infile(databaseFile);
+    std::ifstream infile(databaseFile.c_str());
 
     if(!infile.is_open())
     {
@@ -51,17 +110,29 @@ BitcoinExchange::BitcoinExchange(const std::string &databaseFile)
             std::string month = date.substr(5, 2);
             std::string day = date.substr(8, 2);
 
-            int y = std::stoi(year);
-            int m = std::stoi(month);
-            int d = std::stoi(day);
+            if(!isValidInt(year) || !isValidInt(month) || !isValidInt(day))
+            {
+                std::cout << "Error: Invalid digit!" << std::endl;
+                continue;
+            }
+
+            int y = std::atoi(year.c_str());
+            int m = std::atoi(month.c_str());
+            int d = std::atoi(day.c_str());
 
             if (y < 0 || m < 1 || m > 12 || d < 1 || d > 31)
             {
                 std::cout << "Error: Invalid date ranges!" << std::endl;
                 continue;
             }
-            double value = std::stod(rateStr);
-            this->_rates.insert({date, value});
+
+             if(!isValidDouble(rateStr))
+            {
+                std::cout << "Error: Invalid rate!" << std::endl;
+                continue;
+            }
+            double value = std::atof(rateStr.c_str());
+            this->_rates.insert(std::make_pair(date, value));
         }
         else
             std::cout << "Error: Invalid date format!" << std::endl;
@@ -89,7 +160,7 @@ BitcoinExchange::~BitcoinExchange()
 void BitcoinExchange::processInputFile(const std::string &inputFile) const
 {
     std::string line;
-    std::ifstream infile(inputFile);
+    std::ifstream infile(inputFile.c_str());
 
     if(!infile.is_open())
     {
@@ -118,17 +189,29 @@ void BitcoinExchange::processInputFile(const std::string &inputFile) const
             std::string month = date.substr(5, 2);
             std::string day = date.substr(8, 2);
 
-            int y = std::stoi(year);
-            int m = std::stoi(month);
-            int d = std::stoi(day);
+            if(!isValidInt(year) || !isValidInt(month) || !isValidInt(day))
+            {
+                std::cout << "Error: Invalid digit!" << std::endl;
+                continue;
+            }
+
+            int y = std::atoi(year.c_str());
+            int m = std::atoi(month.c_str());
+            int d = std::atoi(day.c_str());
 
             if (y < 0 || m < 1 || m > 12 || d < 1 || d > 31)
             {
                 std::cout << "Error: Invalid date ranges!" << std::endl;
                 continue;
             }
+            
+            if(!isValidDouble(rateStr))
+            {
+                std::cout << "Error: Invalid rate!" << std::endl;
+                continue;
+            }
 
-            double value = std::stod(rateStr);
+            double value = std::atof(rateStr.c_str());
             if(value < 0)
             {
                 std::cout << "Error: not a positive number!" << std::endl;
@@ -160,9 +243,10 @@ void BitcoinExchange::processInputFile(const std::string &inputFile) const
                 amount = it->second;
 
             double res = amount * value;
-            std::cout << it->first << "=>" << value << "=" << res << std::endl;
+            std::cout << it->first << " => " << value << " = " << res << std::endl;
         }
         else
             std::cout << "Error: Invalid date format!" << std::endl;
     }
 }
+

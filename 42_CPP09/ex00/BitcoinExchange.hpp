@@ -7,6 +7,9 @@
 #include <sstream>   
 #include <stdexcept>
 #include <cctype>
+#include <cstdlib>
+#include <climits>
+#include <cfloat>
 
 class BitcoinExchange 
 {
