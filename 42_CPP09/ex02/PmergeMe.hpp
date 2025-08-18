@@ -8,7 +8,7 @@
 #include <stdexcept>
 #include <ctime>   
 #include <algorithm> 
-#include <templates>
+#include <climits>
 
 class PmergeMe
 {
@@ -18,11 +18,8 @@ class PmergeMe
 
 		void parseInput(int argc, char **argv);
 
-		template <typename Container>
-		Container fordJohnsonSort(Container& data);
-
-		template <typename Container>
-		Container makePairs(Container& data);
+		std::vector<int> sortVector(std::vector<int>& data);
+		std::deque<int> sortDeque(std::deque<int>& data);
 
 		std::vector<size_t> jacobsthalSequence(size_t n);
 
