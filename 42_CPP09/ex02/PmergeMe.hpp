@@ -21,7 +21,7 @@ class PmergeMe
 		std::vector<int> sortVector(std::vector<int>& data);
 		std::deque<int> sortDeque(std::deque<int>& data);
 
-		std::vector<size_t> jacobsthalSequence(size_t n);
+		std::vector<size_t> jacobsthalOrder(size_t n);
 
 		template <typename Container>
 		void binaryInsert(Container& chain, int value, size_t endIndex);
