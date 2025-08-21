@@ -114,27 +114,33 @@ std::deque<int> PmergeMe::sortDeque(std::deque<int>& data)
         res.push_back(pairs[j].second);
         pending.push_back(pairs[j].first);
     }
+    // std::vector<size_t> j = jacobsthalOrder(pending.size());
+    // std::vector<size_t> inserted(pending.size(), false);           ;
+    // for (size_t i = 0; i < j.size(); i++)
+    // {
+
+    // }
+    
     return res;
 }
 
 std::vector<size_t> PmergeMe::jacobsthalOrder(size_t n)
 {
-    std::vector<size_t> vec;
+    std::vector<size_t> jacobVec;
+    
+    jacobVec.push_back(0);
+    jacobVec.push_back(1);
 
-    for (size_t i = 0; i < n; i++)
+    while(jacobVec.back() <= n)
     {
-       if(i == 0)
-        vec.push_back(0);
-        
-       else if(i == 1)
-        vec.push_back(1);
+        size_t size = jacobVec.size();
+        size_t prev1 = jacobVec[size - 1];
+        size_t prev2 = jacobVec[size - 2];
 
-       else
-       {
-            size_t res = vec[i - 1] +  2 * vec[i - 2];
-            vec.push_back(res);
-       }
-
+        size_t next = prev1 + prev2 * 2;
+        if(next > n)
+            break;
+        jacobVec.push_back(next);
     }
-    return vec;
+    return jacobVec;
 }
