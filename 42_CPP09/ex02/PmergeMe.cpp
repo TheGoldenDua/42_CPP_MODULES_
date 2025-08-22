@@ -26,7 +26,7 @@ void PmergeMe::parseInput(int ac, char **av)
     if(ac <= 1)
         throw std::runtime_error("Error: Invalid parameters!");
 
-    for(size_t i = 1; i < ac; i++)
+    for(int i = 1; i < ac; i++)
     {
         std::string arg(av[i]);
 
@@ -50,51 +50,69 @@ void PmergeMe::parseInput(int ac, char **av)
     }
 }
 
-bool comparePairsBySecond(const std::pair<int, int>& a, const std::pair<int, int>& b) 
+static bool comparePairsBySecond(const std::pair<int, int>& a, const std::pair<int, int>& b) 
 {
         return a.second < b.second;
 }
 
 std::vector<int> PmergeMe::sortVector(std::vector<int>& data)
 {
-    std::vector<int> res;
-    std::vector<int> pending;
-    std::vector<std::pair<int, int>> pairs;
+    std::vector<int> bigs;
+    std::vector<int> smalls;
+    std::vector<std::pair<int, int> > pairs;
     int rest; 
-    size_t i = 0;
     
-    for (i; i < data.size(); i += 2)
-    {
-        if(i + 1 < data.size())
-        {    
+    
+    for (size_t i = 0; i + 1 < data.size(); i += 2)
+    {    
             if(data[i] < data[i + 1])
                 pairs.push_back(std::make_pair(data[i], data[i + 1]));
             else
                 pairs.push_back(std::make_pair(data[i + 1], data[i]));
-        }
     }
     std::sort(pairs.begin(), pairs.end(), comparePairsBySecond);
 
+    bool hasRest = false;
     if(data.size() % 2 != 0)
-        rest = data[i];
-    
-    for (size_t j = 0; j < pairs.size(); j++)
     {
-        res.push_back(pairs[j].second);
-        pending.push_back(pairs[j].first);
+        rest = data.back();
+        hasRest = true;
     }
-    return res;
+
+    for (size_t j = 0; j < pairs.size(); ++j)
+    {
+        bigs.push_back(pairs[j].second);
+        smalls.push_back(pairs[j].first);
+    }
+    
+    std::vector<size_t> order = jacobsthalOrder(smalls.size());
+    std::vector<bool> inserted(smalls.size(), false);
+
+    for(size_t index = 0; index < order.size(); ++index)
+    {
+        size_t pos = order[index];
+        if(pos < smalls.size() && !inserted[pos])
+        {
+            binaryInsert(bigs, smalls[pos], bigs.size() - 1);
+            inserted[pos] = true;
+        }
+    }
+
+    if(hasRest)
+        binaryInsert(bigs, rest, bigs.size() - 1);
+
+    return bigs;
 }
 
 std::deque<int> PmergeMe::sortDeque(std::deque<int>& data)
 {
-    std::deque<int> res;
-    std::deque<int> pending;
-    std::deque<std::pair<int, int>> pairs;
+    std::deque<int> bigs;
+    std::deque<int> smalls;
+    std::deque<std::pair<int, int> > pairs;
     int rest; 
     size_t i = 0;
     
-    for (i; i < data.size(); i += 2)
+    for (; i < data.size(); i += 2)
     {
         if(i + 1 < data.size())
         {    
@@ -106,22 +124,44 @@ std::deque<int> PmergeMe::sortDeque(std::deque<int>& data)
     }
     std::sort(pairs.begin(), pairs.end(), comparePairsBySecond);
 
+    bool hasRest = false;
     if(data.size() % 2 != 0)
-        rest = data[i];
+    {
+        rest = data.back();
+        hasRest = true;
+    }
     
     for (size_t j = 0; j < pairs.size(); j++)
     {
-        res.push_back(pairs[j].second);
-        pending.push_back(pairs[j].first);
+        bigs.push_back(pairs[j].second);
+        smalls.push_back(pairs[j].first);
     }
-    // std::vector<size_t> j = jacobsthalOrder(pending.size());
-    // std::vector<size_t> inserted(pending.size(), false);           ;
-    // for (size_t i = 0; i < j.size(); i++)
-    // {
-
-    // }
+   
     
-    return res;
+    std::vector<size_t> order = jacobsthalOrder(smalls.size());
+    std::vector<bool> inserted(smalls.size(), false);
+
+    for(size_t index = 0; index < order.size(); index++)
+    {
+        size_t pos = order[index];
+        if(pos < smalls.size() && !inserted[pos])
+        {
+            int val = smalls[pos];
+            binaryInsert(bigs, val, bigs.size() - 1);
+            inserted[pos] = true;
+        }
+    }
+
+    for (size_t k = 0; k < smalls.size(); k++)
+    {
+        if (!inserted[k])
+            binaryInsert(bigs, smalls[k], bigs.size() - 1);
+    }
+
+    if(hasRest)
+        binaryInsert(bigs, rest, bigs.size() - 1);
+
+    return bigs;
 }
 
 std::vector<size_t> PmergeMe::jacobsthalOrder(size_t n)
@@ -143,4 +183,42 @@ std::vector<size_t> PmergeMe::jacobsthalOrder(size_t n)
         jacobVec.push_back(next);
     }
     return jacobVec;
+}
+
+void PmergeMe::run(int ac, char **av)
+{
+    parseInput(ac, av);
+
+    std::cout << "Before: ";
+    for (size_t i = 0; i < vec.size(); i++)
+        std::cout << vec[i] << " ";
+    std::cout << std::endl;
+
+    std::clock_t startVec = std::clock();
+    std::vector<int> sortedVec = sortVector(vec);
+    std::clock_t endVec = std::clock();
+    double vectorTime = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC * 1e6;
+
+    std::clock_t startDeq = std::clock();
+    std::deque<int> sortedDeq = sortDeque(deck);
+    std::clock_t endDeq = std::clock();
+    double dequeTime = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC * 1e6;
+
+    vec = sortedVec;
+    deck = sortedDeq;
+
+    std::cout << "After:  ";
+    for (size_t i = 0; i < vec.size(); i++)
+        std::cout << vec[i] << " ";
+    std::cout << std::endl;
+
+    std::cout << "Time to process a range of " << vec.size()
+              << " elements with std::vector : "
+              << std::fixed << std::setprecision(5)
+              << vectorTime << " us" << std::endl;
+
+    std::cout << "Time to process a range of " << deck.size()
+              << " elements with std::deque : "
+              << std::fixed << std::setprecision(5)
+              << dequeTime << " us" << std::endl;
 }

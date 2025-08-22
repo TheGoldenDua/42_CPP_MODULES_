@@ -9,6 +9,8 @@
 #include <ctime>   
 #include <algorithm> 
 #include <climits>
+#include <sys/time.h>
+#include <iomanip>
 
 class PmergeMe
 {
@@ -26,6 +28,13 @@ class PmergeMe
 		template <typename Container>
 		void binaryInsert(Container& chain, int value, size_t endIndex)
 		{
+
+			 if (chain.empty()) 
+    		{
+       			chain.push_back(value);
+        		return;
+    		}
+
 			size_t left = 0;
 			size_t right = endIndex;
 
@@ -35,15 +44,20 @@ class PmergeMe
 
 				if(chain[mid] == value)
 				{
-					left = mid;
-					break;
+					chain.insert(chain.begin() + mid, value);
+					return;
 				}
-				if(chain[mid] < value)
+				else if(chain[mid] < value)
+				{
 					left = mid + 1;
+				}
 				else
 				{	
 					if(mid == 0)
+					{
+						left = 0;
 						break;
+					}
 					right = mid - 1;
 				}
 			}
