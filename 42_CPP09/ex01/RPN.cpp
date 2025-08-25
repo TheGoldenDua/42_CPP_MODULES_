@@ -21,9 +21,23 @@ RPN::~RPN()
 {
 }
 
+static std::string trim(const std::string &str)
+{
+    size_t start = 0;
+    size_t end = str.size();
+
+    while (start < str.size() && std::isspace(static_cast<unsigned char>(str[start])))
+        start++;
+
+    while (end > start && std::isspace(static_cast<unsigned char>(str[end - 1])))
+        end--;
+
+    return str.substr(start, end - start);
+}
+
 void RPN::processInput(const std::string input)
 {
-    std::string copy = input;
+    std::string copy = trim(input);
     std::string token;
     
     while(!copy.empty())
@@ -56,11 +70,11 @@ void RPN::processInput(const std::string input)
             else if (token == "-")
                 nb = b - a;
             else if (token == "*")
-                nb = a * b;
+                nb = b * a;
             else if(token == "/")
             {
                 if (a == 0)
-                    throw std::runtime_error("Error: Division by zero");
+                    throw std::runtime_error("Error: Division by zero!");
                 nb = b / a;
             }
             else

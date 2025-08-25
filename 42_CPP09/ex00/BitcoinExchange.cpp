@@ -89,7 +89,11 @@ BitcoinExchange::BitcoinExchange(const std::string &databaseFile)
         exit(1);
     }
     
-    std::getline(infile, line);
+    if(!std::getline(infile, line))
+    {
+        std::cout <<"Error: Empty file!" << std::endl;
+        exit(1);
+    }
     while(std::getline(infile, line))
     {
         std::size_t it = line.find(',');
@@ -154,7 +158,6 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 
 BitcoinExchange::~BitcoinExchange()
 {
-    
 }
 
 void BitcoinExchange::processInputFile(const std::string &inputFile) const
@@ -168,7 +171,11 @@ void BitcoinExchange::processInputFile(const std::string &inputFile) const
         exit(1);
     }
 
-    std::getline(infile, line);
+    if(!std::getline(infile, line))
+    {
+        std::cout <<"Error: Empty file!" << std::endl;
+        exit(1);
+    }
     while(std::getline(infile, line))
     {
         std::size_t it = line.find('|');
