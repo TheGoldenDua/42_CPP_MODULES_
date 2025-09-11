@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 14:12:17 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/09/11 14:12:18 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "BitcoinExchange.hpp"
 
@@ -130,7 +142,7 @@ BitcoinExchange::BitcoinExchange(const std::string &databaseFile)
                 continue;
             }
 
-             if(!isValidDouble(rateStr))
+            if(!isValidDouble(rateStr))
             {
                 std::cout << "Error: Invalid rate!" << std::endl;
                 continue;
@@ -176,6 +188,14 @@ void BitcoinExchange::processInputFile(const std::string &inputFile) const
         std::cout <<"Error: Empty file!" << std::endl;
         exit(1);
     }
+    
+    line = trim(line);
+    if(line != "date | value")
+    {
+        std::cout << "Error: input file must start with 'date | value'" << std::endl;
+        exit(1);
+    }
+
     while(std::getline(infile, line))
     {
         std::size_t it = line.find('|');
@@ -256,4 +276,3 @@ void BitcoinExchange::processInputFile(const std::string &inputFile) const
             std::cout << "Error: Invalid date format!" << std::endl;
     }
 }
-

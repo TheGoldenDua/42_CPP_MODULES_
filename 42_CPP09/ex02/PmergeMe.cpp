@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 14:11:43 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/09/11 14:11:44 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PmergeMe.hpp"
 
 PmergeMe::PmergeMe()
@@ -23,7 +35,7 @@ PmergeMe::~PmergeMe()
 
 void PmergeMe::parseInput(int ac, char **av)
 {
-    if(ac <= 1)
+    if(ac < 2)
         throw std::runtime_error("Error: Invalid parameters!");
 
     for(int i = 1; i < ac; i++)

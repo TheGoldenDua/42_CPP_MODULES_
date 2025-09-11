@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 14:11:54 by del-ganb          #+#    #+#             */
+/*   Updated: 2025/09/11 14:11:55 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RPN_HPP
 #define RPN_HPP
 
@@ -7,33 +19,6 @@
 #include <exception>
 #include <cstdlib>
 
-
-// class NotValidNumberException : public std::exception
-// {
-//     public: 
-//         const char* what() const throw()
-//         {
-//             return "Error: Invalid number (nbrs must to be less than 10)!";
-//         }
-// };
-
-// class NotValidOperatorException : public std::exception
-// {
-//     public: 
-//         const char* what() const throw()
-//         {
-//             return "Error: Invalid operator (allowed operators: +,-,*,/)!";
-//         }
-// };
-
-// class NotEnoughOperandsException : public std::exception
-// {
-//     public: 
-//         const char* what() const throw()
-//         {
-//             return "Error: Not enough operands!";
-//         }
-// };
 
 class RPN
 {
